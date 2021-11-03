@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+
+    </style>
+</head>
+<body>
+
+      
+      <div class="input-group mb-3">
+        <input type="text" class="form-control cc" placeholder="買入多少價" aria-label="Recipient's username" aria-describedby="button-addon2">
+      </div>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control bb" placeholder="買出多少價" aria-label="Recipient's username" aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary btn-a" type="button" id="button-addon2">計算</button>
+        </div>
+      </div>
+      <div class="input-group flex-nowrap">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="addon-wrapping">買入價格:</span>
+        </div>
+        <input type="text" class="form-control buy" aria-describedby="addon-wrapping" readonly>
+      </div>
+      <div class="input-group flex-nowrap">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="addon-wrapping">賣出價格:</span>
+        </div>
+        <input type="text" class="form-control Sell" aria-describedby="addon-wrapping" readonly>
+      </div>
+      <div class="input-group flex-nowrap">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="addon-wrapping">共賺多少:</span>
+        </div>
+        <input type="text" class="form-control total" aria-describedby="addon-wrapping" readonly>
+      </div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script>
+ 
+    $('.btn-a').on("click",function(){
+    var cc = $(".cc").val();  //買入
+    var acc = cc*1000;//買入總價
+    var accc = acc*0.001425*0.28;//買入手續費
+    var acccc = parseInt(accc)+acc //買入手續費+總價
+   
+    var bb = $(".bb").val();  //賣出
+    var abb = bb*1000;//賣出總價
+    var abbb = abb*0.001425*0.28;//賣出手續費
+    var abbb3 = abb*0.003;//政府手續費
+    var abbbb = abb-parseInt(abbb)-parseInt(abbb3);
+    console.log(acccc);
+    console.log(abbbb);
+    console.log(abbbb - acccc);
+    $('.buy').val(acccc);
+    $('.Sell').val(abbbb);
+    $('.total').val(abbbb - acccc);
+    });
+
+
+
+</script>
+</body>
+</html>
